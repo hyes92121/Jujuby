@@ -1,0 +1,43 @@
+version: "3"
+services: 
+  controller: 
+    image: nslab/controller:2.0
+    build:
+      context: '.'
+      dockerfile: "Dockerfiles/Dockerfile.controller"
+    depends_on:
+      - mongo
+      - redis
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./Controller:/home/Controller
+    env_file:
+      - "./.envFiles/controller.env"
+    ports:
+      - "22222:22222"
+    networks:
+      main-net:
+        ipv4_address: 172.27.0.2
+  mongo:
+    container_name: mongodb
+    image: mongo
+    volumes:
+      - ./MongoData:/data/db
+    networks:
+      main-net:
+        ipv4_address: 172.27.0.3
+  redis:
+    container_name: cache
+    image: redis
+    volumes:
+      - ./RedisData:/data
+    networks:
+      main-net:
+        ipv4_address: 172.27.0.4
+networks:
+  main-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.27.0.0/16
+        
