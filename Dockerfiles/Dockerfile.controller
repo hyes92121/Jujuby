@@ -1,16 +1,19 @@
 FROM ubuntu:latest
 
-#Create app directory
+# Create home directory
 WORKDIR /home
 
-#install docker to enable docker and nodejs
+# Install docker to enable docker and nodejs
 RUN apt-get update && apt-get upgrade -y \
     && apt-get install -y curl \ 
     && curl -sSL https://get.docker.com/ | sh \
     && curl --silent --location https://deb.nodesource.com/setup_14.x | bash - \
     && apt-get install -y nodejs build-essential git unzip
 
+# Create application directory 
 WORKDIR /home/Controller
+# Copy dependency list from host to container 
+ADD Controller/package.json /home/Controller 
 RUN npm install
 # Binds to port 22222
 EXPOSE 22222

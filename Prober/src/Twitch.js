@@ -1,8 +1,8 @@
 const API = require('./Api.js')
-const { lookupStreamCache, updateChannelToken } = require('./Cache/StreamInfoCache.js')
-const { getEdgeAddr } = require('./Utils/getEdgeAddr.js')
-const { getChannels } = require('./Utils/getChannels.js')
-const { batchGetStreamInfo } = require('./Utils/getStreamInfo.js')
+const { lookupStreamCache, updateChannelToken } = require('../Cache/StreamInfoCache.js')
+const { getEdgeAddr } = require('../Utils/getEdgeAddr.js')
+const { getChannels } = require('../Utils/getChannels.js')
+const { batchGetStreamInfo } = require('../Utils/getStreamInfo.js')
 
 /**
  * All methods under the Twitch class returns a Promise

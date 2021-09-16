@@ -1,4 +1,4 @@
-const { Pen } = require('../Pen.js')
+const { Pen } = require('../src/Pen.js')
 
 class intervalGenerator {
   constructor(mode, max, min) {

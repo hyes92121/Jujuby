@@ -2,9 +2,9 @@ const express = require('express')
 // const readLastLines = require('read-last-lines')
 const assert = require('assert')
 const AssertionError = require('assert').AssertionError
-const ProbingPool = require('./Probe.js')
-const API = require('./Api.js')
-const { logBuffer } = require('./Pen.js')
+const ProbingPool = require('./src/Probe.js')
+const API = require('./src/Api.js')
+const { logBuffer } = require('./src/Pen.js')
 
 const app = express()
 const port = 3000

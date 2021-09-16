@@ -10,14 +10,25 @@ services:
       - redis
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./Controller:/home/Controller
+      - ./Controller/secret:/home/Controller/secret
+      - ./Controller/src:/home/Controller/src
+      - ./Controller/.env:/home/Controller/.env
     env_file:
-      - "./.envFiles/controller.env"
+      - "./.envFiles/variables.env"
     ports:
       - "22222:22222"
     networks:
       main-net:
         ipv4_address: 172.27.0.2
+# We do not actually run the tmp container here 
+# Rather, we use it to build an image that will be used later
+  tmp:
+    image: nslab/prober:2.0 
+    build: 
+      context: '.'
+      dockerfile: 'Dockerfiles/Dockerfile.prober'
+      args:
+        NORDVPN_VERSION: '3.7.4'
   mongo:
     container_name: mongodb
     image: mongo

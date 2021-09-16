@@ -23,6 +23,19 @@ RUN addgroup --system vpn && \
         /var/lib/apt/lists/* \
         /var/tmp/*
 
-COPY start_vpn.sh /usr/bin
+COPY Dockerfiles/start_vpn.sh /usr/bin
 WORKDIR /home/Prober
+ADD Prober/package.json /home/Prober 
+RUN npm install 
+
+ADD ./Prober/Cache          /home/Prober/Cache
+ADD ./Prober/DataAccess     /home/Prober/DataAccess
+ADD ./Prober/ovpn_configs   /home/Prober/ovpn_configs
+ADD ./Prober/Utils          /home/Prober/Utils
+ADD ./Prober/src            /home/Prober/src
+ADD ./Prober/app.js         /home/Prober/app.js
+ADD ./Prober/start.sh       /home/Prober/start.sh
+ADD ./Prober/start_shark.sh /home/Prober/start_shark.sh
+ADD ./.envFiles/resolv.conf /etc/resolv.conf
+
 CMD ["/bin/bash","start.sh"]

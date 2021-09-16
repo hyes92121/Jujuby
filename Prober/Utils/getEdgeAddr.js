@@ -1,5 +1,5 @@
 const { URL } = require('url') // (native) provides utilities for URL resolution and parsing
-const API = require('../Api.js')
+const API = require('../src/Api.js')
 const { lookupStreamCache } = require('../Cache/StreamInfoCache.js')
 const { lookupDNSCache } = require('../Cache/DNSCache.js')
 const m3u8Parser = require('m3u8-parser')
@@ -102,27 +102,11 @@ if (require.main === module) {
       setTimeout(resolve, ms)
     })
   }
-  const channel = 'bebelolz'
+  const channel = process.argv[2]
   const testMultiCall = async (channel) => {
     getEdgeAddr(channel)
       .then(addr => { 
-        console.log(addr)
-      })
-      .catch(error => {
-        console.log(`Error caught in testMultiCall in getEdgeAddr.js | error: ${error.code} | Message: ${error.message}`)
-      })
-    await sleep(1000)
-    getEdgeAddr(channel)
-      .then(addr => { 
-        console.log(addr)
-      })
-      .catch(error => {
-        console.log(`Error caught in testMultiCall in getEdgeAddr.js | error: ${error.code} | Message: ${error.message}`)
-      })
-    await sleep(1000)
-    getEdgeAddr(channel)
-      .then(addr => { 
-        console.log(addr)
+        console.log(`Content server address for ${channel} is ${addr}`)
       })
       .catch(error => {
         console.log(`Error caught in testMultiCall in getEdgeAddr.js | error: ${error.code} | Message: ${error.message}`)

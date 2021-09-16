@@ -1,4 +1,4 @@
-const API = require('../Api.js')
+const API = require('../src/Api.js')
 
 const getChannels = async (language = 'zh') => {
   const records = []

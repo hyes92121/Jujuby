@@ -1,5 +1,5 @@
-const { updateLoggerCacheInfo } = require('../RequestLogger')
-const { Pen } = require('../Pen.js')
+const { updateLoggerCacheInfo } = require('../src/RequestLogger')
+const { Pen } = require('../src/Pen.js')
 
 class BaseCache {
   constructor () {

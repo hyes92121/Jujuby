@@ -1,3 +1,7 @@
+/**
+ * This module is deprecated and is not used in any portion of the code.
+ */
+
 const { twitchAPI, hostingAPI } = require('./api.js')
 const { lookupIdBeforeGet } = require('./helper.js')
 

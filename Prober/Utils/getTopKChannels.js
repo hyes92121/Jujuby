@@ -1,7 +1,7 @@
 const path = require('path')
 const { Worker } = require('worker_threads')
-const { Pen } = require('../Pen.js')
-const Twitch = require('../Twitch.js')
+const { Pen } = require('../src/Pen.js')
+const Twitch = require('../src/Twitch.js')
 
 function runService(workerData) {
   return new Promise((resolve, reject) => {

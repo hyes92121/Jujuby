@@ -1,4 +1,4 @@
-const API = require('../Api.js')
+const API = require('../src/Api.js')
 
 function buildArgs(streams) {
   streams = streams.map(x => `user_login=${x}`)

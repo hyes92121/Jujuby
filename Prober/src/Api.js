@@ -3,8 +3,9 @@ const http = require('http')
 const https = require('https')
 const { MongoTimeoutError } = require('mongodb')
 const { URL } = require('url') // (native) provides utilities for URL resolution and parsing
-const { lookupDNSCache } = require('./Cache/DNSCache.js')
+const { lookupDNSCache } = require('../Cache/DNSCache.js')
 const { addReqCount, getReqCount } = require('./RequestLogger.js')
+const { Pen } = require('./Pen.js')
 
 const clientIdForOldApi = 'kimne78kx3ncx6brgo4mv6wki5h1ko'
 const clientIdForHelixApi = '4q2n7zlq4tvwngsh0102dl649camkt'
@@ -47,7 +48,7 @@ axiosLookupBeforeRequest.interceptors.request.use(async (config) => {
 axiosLookupBeforeRequest.interceptors.response.use(async (response) => {
   response.config.metadata.endTime = new Date()
   response.duration = response.config.metadata.endTime - response.config.metadata.startTime
-  console.log(`${response.request.connection.servername}: ${response.duration}`)
+  Pen.write(`RTT for hostname: ${response.request.connection.servername}: ${response.duration}`, 'white')
   return response 
 })
 

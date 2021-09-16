@@ -2,11 +2,11 @@
 /* eslint-disable space-infix-ops */
 /* eslint-disable promise/param-names */
 const Twitch = require('./Twitch.js')
-const controllerApi = require('./Utils/controllerApi')
+const controllerApi = require('../Utils/controllerApi')
 const { Pen } = require('./Pen.js')
 const { getTopKChannelsByLanguage } = require('./Aggregator.js')
-const { transactionDb } = require('./DataAccess/index.js')
-const intervalGenerator = require("./Utils/intervalGenerator.js")
+const { transactionDb } = require('../DataAccess/index.js')
+const intervalGenerator = require("../Utils/intervalGenerator.js")
 
 class ProbingPool {
   constructor(language, percentage = 0.8) {

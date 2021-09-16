@@ -1,6 +1,6 @@
 const redis = require('redis');
-const API = require('../Api.js')
-const { Pen } = require('../Pen.js')
+const API = require('../src/Api.js')
+const { Pen } = require('../src/Pen.js')
 const { promisify } = require('util');
 const client = redis.createClient(`${process.env.CACHE_URL}:6379`);
 const getAsync = promisify(client.get).bind(client);

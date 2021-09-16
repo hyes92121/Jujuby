@@ -28,6 +28,7 @@ docker run -it --rm --cap-add=NET_ADMIN --cap-add=SYS_MODULE --device /dev/net/t
     -e COUNTRY=$COUNTRY \
     -e TECHNOLOGY=NordLynx \
     -e CONTROLLER_IP=172.27.0.2 \
-    -v /home/caleb/Jujuby/Prober:/home/Prober \
-    -v /home/caleb/Jujuby/.envFiles/resolv.conf:/etc/resolv.conf \
     nslab/prober:2.0
+#     -v /home/caleb/Jujuby/Prober:/home/Prober \
+#     -v /home/caleb/Jujuby/.envFiles/resolv.conf:/etc/resolv.conf \
+#     nslab/prober:2.0

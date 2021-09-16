@@ -1,4 +1,4 @@
-const { getEdgeAddr } = require('./get_edge_addr.js')
+const { getEdgeAddr } = require('./getEdgeAddr.js')
 
 function getAllEdge (channel) {
   const edges = {}
@@ -54,6 +54,7 @@ function getAllEdge (channel) {
 module.exports = { getAllEdge }
 
 if (require.main === module) {
-  getAllEdge('woke')
+  const channel = process.argv[2]
+  getAllEdge(channel)
     .then(response => console.log(response))
 }

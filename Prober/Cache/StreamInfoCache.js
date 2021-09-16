@@ -1,5 +1,5 @@
 const BaseCache = require('./BaseCache.js')
-const API = require('../Api.js');
+const API = require('../src/Api.js');
 
 class StreamInfoCacheError extends Error {
   constructor(message) {
