@@ -41,14 +41,14 @@ Before running the crawler in a container, we will need to build the container i
     - This will start the UI server as well as the Mongo database. 
     - By default, the UI is run on `140.112.42.160:22222`. 
     - The username and password should be provided to you explicitly. 
+    - This will build and start three containers, `jujuby_controller_1`, `mongodb`, and `cache`. Note that `cache` is currently not used, but will be in future updates. 
 
-- **Start a prober container connected to VPN**
+- **Manually starting a prober container**
     - Navigate to `Jujuby/Scripts` and run `sudo bash manual_run.sh SERVERID COUNTRY` 
     - `SERVERID` can be found using `curl --silent "https://api.nordvpn.com/v1/servers" | jq --raw-output '.[].hostname' | sort --version-sort`. Each line returned is in the format `SERVERID.nordvpn.com`, e.g., `us9263.nordvpn.com`. 
     - `COUNTRY` is the country corresponding to the country code within the `SERVERID` 
+    - You should also have the `jujuby_controller_1` container also up and running. If not, then refer to the [Using the Jujuby UI](#using-the-jujuby-ui) section. 
+    - We will need to use the controller to signal the prober container to start probing. 
+    - Type `docker exec -it jujuby_controller_1 bash`. If you see a new shell session, this means you are successfully using the controller container. 
+    - Using the controller container shell, type `curl PROBER_NAME:3000/api/pool/start` where `PROBER_NAME` is the name of the prober container. Typically it is named using the format `probe-manual-SERVERID`, but you can run `docker ps -a` to make sure. 
  
-## Background 
-
-## Visualiser Page 
-
-## Authors 
