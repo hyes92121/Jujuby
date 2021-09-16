@@ -36,6 +36,5 @@ ADD ./Prober/src            /home/Prober/src
 ADD ./Prober/app.js         /home/Prober/app.js
 ADD ./Prober/start.sh       /home/Prober/start.sh
 ADD ./Prober/start_shark.sh /home/Prober/start_shark.sh
-ADD ./.envFiles/resolv.conf /etc/resolv.conf
 
 CMD ["/bin/bash","start.sh"]

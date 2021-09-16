@@ -13,7 +13,7 @@ class Controller {
   }
 
   setup() {
-    setInterval(() => { this.cleanUpSuspendedProbeContainer() }, 0.5 * 60 * 1000)
+    // setInterval(() => { this.cleanUpSuspendedProbeContainer() }, 0.5 * 60 * 1000)
   }
 
   async startProbeContainer(country, languages, percentages) {

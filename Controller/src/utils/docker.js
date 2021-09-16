@@ -1,6 +1,12 @@
 const { execSync } = require('child_process')
 const os = require('os')
 const Pen = require('../Pen')
+
+/**
+ * The following line is originally under line 25 (-e CACHE_URL=${process.env.CACHE_URL}): 
+ * `-v ${process.env.PROJECT_ROOT}/Prober:/home/Prober`,
+ */
+
 const Docker = Object.freeze({
   runProbeContainer: async (containerName, containerId, serverId, languages, percentages, country) => {
     /* Cannot use -it flag here */
@@ -9,14 +15,14 @@ const Docker = Object.freeze({
       '--sysctl net.ipv4.conf.all.rp_filter=2',
       '--ulimit memlock=-1:-1',
       `--network ${process.env.DOCKER_NETWORK}`,
-      `-e USER=${process.env.NORD_USER} -e PASS='${process.env.NORD_PWD}'`,
+      `-e USER=${process.env.NORD_USER}`,
+      '-e PASS=' + "'" + process.env.NORD_PWD + "'", 
       `-e CONNECT=${serverId} -e LANGUAGE=${languages.join(',')} -e PERCENTAGES=${percentages.join(',')}`,
       '-e TECHNOLOGY=NordLynx',
       `-e COUNTRY=${country.replace(/ /g, '_')}`,
       `-e CONTROLLER_IP=${os.networkInterfaces().eth0[0].address}`,
       `-e ID=${containerId}`,
       `-e CACHE_URL=${process.env.CACHE_URL}`,
-      `-v ${process.env.PROJECT_ROOT}/Prober:/home/Prober`,
       `-v ${process.env.PROJECT_ROOT}/.envFiles/resolv.conf:/etc/resolv.conf`,
       'nslab/prober:2.0'].join(' ')
     try {

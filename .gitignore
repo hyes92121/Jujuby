@@ -1,11 +1,12 @@
 **/node_modules/
 **/.vscode/
-/MongoData
-/RedisData
-/Secret
+MongoData
+RedisData
+Secret
 **/*.log
 **/*.logs
 **/*.csv
 **/*.zip
 **/*.txt
 **/*.svg
+**/*.tgz
