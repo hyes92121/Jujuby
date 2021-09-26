@@ -10,7 +10,7 @@ const { Pen } = require('./Pen.js')
 const clientIdForOldApi = 'kimne78kx3ncx6brgo4mv6wki5h1ko'
 const clientIdForHelixApi = '4q2n7zlq4tvwngsh0102dl649camkt'
 const clientSecret = 'cce6pbnf5h0b0gpieg4zj28anmnkl2'
-const accessToken = 'oyrp37hkmexf0v09csjy8qnbrlxsju'
+const accessToken = 'c98538gkrt1xsiibqxqpwtcr3ew2i0'
 
 /* Add axios interceptor to do address replacement before every request */
 const axiosLookupBeforeRequest = axios.create({
