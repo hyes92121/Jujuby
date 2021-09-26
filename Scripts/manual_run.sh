@@ -3,7 +3,7 @@ COUNTRY=$2
 CONTAINERNAME="probe-manual-$SERVERID"
 LANGUAGES='zh,en,es,ko,fr'
 PERCENTAGES='80,60,60,80,80'
-PROJECT_ROOT=$(cat .envFiles/variables.env | grep "PROJECT_ROOT" | sed 's/=/\n/g' | tail -n 1)
+PROJECT_ROOT=$(cat ../.envFiles/variables.env | grep "PROJECT_ROOT" | sed 's/=/\n/g' | tail -n 1)
 
 
 docker run -it --rm --cap-add=NET_ADMIN --cap-add=SYS_MODULE --device /dev/net/tun --name $CONTAINERNAME \
