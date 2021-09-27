@@ -7,7 +7,18 @@ const { lookupDNSCache } = require('../Cache/DNSCache.js')
 const { addReqCount, getReqCount } = require('./RequestLogger.js')
 const { Pen } = require('./Pen.js')
 
+/* Not sure where this is still used. Leaving it here for reference */
 const clientIdForOldApi = 'kimne78kx3ncx6brgo4mv6wki5h1ko'
+/**
+   * The following arguments are required for a successful request to Twitch's helix API: Client ID, Client secret, Access token.
+   * The access token is obtained from api: https://id.twitch.tv/oauth2/token taking client_id, client_secret, and grant_type as arguments.
+   * Client credentials are listed below. The "grant_type" variable should always be "client_credentials". 
+   * The access token has a valid duration in which it will expire once exceeded and requires obtaining a new one.
+   * We can know when the token expires if we get an 401 response from the helix api. 
+   * See https://dev.twitch.tv/docs/authentication/getting-tokens-oauth/#oauth-client-credentials-flow for more reference.  
+   * There is a renewal method that takes the grant_type as "refresh_token" as opposed to "client_credentials".
+   * That is for a separate token type, and does not work in our case.
+   */
 const clientIdForHelixApi = '4q2n7zlq4tvwngsh0102dl649camkt'
 const clientSecret = 'cce6pbnf5h0b0gpieg4zj28anmnkl2'
 const accessToken = 'c98538gkrt1xsiibqxqpwtcr3ew2i0'
@@ -91,13 +102,9 @@ const buildOptions = (api, args) => {
 
 class API {
   static axiosLookupBeforeGet(api, args) { return axiosLookupBeforeRequest.get(api, args) }
-  
+
   /**
-   * The following arguments are required for a successful request to Twitch's helix API:
-   * Client ID, Client secret, Access token. The access token is obtained from api: https://id.twitch.tv/oauth2/token
-   * taking client_id, client_secret, and grant_type as arguments. 
-   * The access token has a valid duration, in which it will expire once exceeded and will require a renew.
-   * We can know when it expires if we get an 401 response from the helix api. 
+   * Code template to renew access token.
    */
 
   static authAPI(type, args) {
@@ -112,13 +119,11 @@ class API {
   static twitchAPI(path, args) {
     const api = `https://api.twitch.tv${path}`
     return axiosLookupBeforeRequest.get(api, buildOptions(api, args))
-    // return axios.get(api, buildOptions(api, args))
   }
 
   static usherAPI(path, args) {
     const api = `https://usher.ttvnw.net${path}`
     return axiosLookupBeforeRequest.get(api, buildOptions(api, args))
-    // return axios.get(api, buildOptions(api, args))
   }
 
   static hostingAPI(path, args) {

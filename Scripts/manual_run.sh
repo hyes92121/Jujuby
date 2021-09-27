@@ -1,12 +1,18 @@
 SERVERID=$1
 COUNTRY=$2
-CONTAINERNAME="probe-manual-$SERVERID"
+CONTAINER_NAME="probe-manual-$SERVERID"
+# String with language codes separated by commas
 LANGUAGES='zh,en,es,ko,fr'
+# String with numbers indicating the viewer percentage of a stream language. 80=80% 
 PERCENTAGES='80,60,60,80,80'
 PROJECT_ROOT=$(cat ../.envFiles/variables.env | grep "PROJECT_ROOT" | sed 's/=/\n/g' | tail -n 1)
+# Credentials here are taken from the config file. Should a separate Nord VPN account be used, 
+# you would need to manually replace the credentials with an alternative one. 
+NORD_USER=$(cat ../.envFiles/variables.env | grep "NORD_USER" | sed 's/=/\n/g' | tail -n 1)
+NORD_PWD= $(cat ../.envFiles/variables.env | grep "NORD_PWD" | sed 's/=/\n/g' | tail -n 1)
 
 
-docker run -it --rm --cap-add=NET_ADMIN --cap-add=SYS_MODULE --device /dev/net/tun --name $CONTAINERNAME \
+docker run -it --rm -d --cap-add=NET_ADMIN --cap-add=SYS_MODULE --device /dev/net/tun --name $CONTAINER_NAME \
     --sysctl net.ipv4.conf.all.rp_filter=2 \
     --ulimit memlock=-1:-1 \
     --net jujuby_main-net \
