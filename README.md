@@ -49,13 +49,12 @@ At this point, we have finished setting up the project.
     - Navigate to `Jujuby/Scripts` and run `sudo bash manual_run.sh SERVERID COUNTRY`.
     - `SERVERID` can be found using `curl --silent "https://api.nordvpn.com/v1/servers" | jq --raw-output '.[].hostname' | sort --version-sort`. Each line returned is in the format `SERVERID.nordvpn.com`, e.g., `us9263.nordvpn.com`. 
     - `COUNTRY` is the country corresponding to the country code within the `SERVERID` 
-    - You should also have the `jujuby_controller_1` container also up and running. If not, then refer to the [Using the Jujuby UI](#using-the-jujuby-ui) section. 
+    - You should also have the `jujuby_controller_1` container also up and running. If not, then refer to **Step 2**. 
     - We will need to use the controller to signal the prober container to start probing. Type `docker exec -it jujuby_controller_1 bash`. If you see a new shell session, this means you are successfully using the controller container shell.
     - Using the controller container shell, type `curl PROBER_NAME:3000/api/pool/start` where `PROBER_NAME` is the name of the prober container. Typically it is named using the format `probe-manual-SERVERID`, but you can run `docker ps -a` to make sure.
     - To stop a prober container, use the controller container shell to send a request: `curl PROBER_NAME:3000/api/pool/stop` to stop the crawling process and ensure a graceful container shutdown. 
     - References as to what APIs the prober container has can be found in `Jujuby/Prober/app.js`.
  
-
 ## Common Use Cases 
 ### Manually starting multiple prober containers 
 ### Using and importing utility modules 
@@ -70,3 +69,4 @@ At this point, we have finished setting up the project.
 - **Can Docker-compose resume to my shell after running a container?** 
 - **How can I modify the database schema?** 
 - **Where can I backup the database data?** 
+- **How is the data written to the database?**
