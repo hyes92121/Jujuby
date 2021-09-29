@@ -2,9 +2,9 @@ SERVERID=$1
 COUNTRY=$2
 CONTAINER_NAME="probe-manual-$SERVERID"
 # String with language codes separated by commas
-LANGUAGES='zh,en,es,ko,fr'
+LANGUAGES='zh,ko'
 # String with numbers indicating the viewer percentage of a stream language. 80=80% 
-PERCENTAGES='80,60,60,80,80'
+PERCENTAGES='20,20'
 PROJECT_ROOT=$(cat ../.envFiles/variables.env | grep "PROJECT_ROOT" | sed 's/=/\n/g' | tail -n 1)
 # Credentials here are taken from the config file. Should a separate Nord VPN account be used, 
 # you would need to manually replace the credentials with an alternative one. 

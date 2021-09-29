@@ -1,7 +1,6 @@
 const { MongoClient } = require("mongodb");
 // const { makeTransactionDb } = require('./transaction-db.js')
-// const url = 'mongodb://172.27.0.3:27017'
-const url = 'mongodb://52.183.122.138:23234'
+const url = 'mongodb://172.27.0.3:27017'
 const dbName = 'Twitch'
 const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true })
 

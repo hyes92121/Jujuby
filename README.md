@@ -58,10 +58,10 @@ At this point, we have finished setting up the project.
         - At the end of the screen, you should see the prompt staying at `ProbingPool listening at http://localhost:3000`. This means the container is ready to accept controller requests. 
     - *Starting the prober container:*
         - We will need to use the controller to signal the prober container to start probing. Open up a new shell session and type `docker exec -it jujuby_controller_1 bash`. If you see a new shell session, this means you are successfully executing the controller container shell.
-        - Using the controller container shell, type `curl PROBER_NAME:3000/api/pool/start` where `PROBER_NAME` is the name of the prober container. Typically it is named using the format `probe-manual-SERVERID`, but you can run `docker ps -a` to make sure.
+        - Using the controller container shell, type `curl -X POST PROBER_NAME:3000/api/pool/start` where `PROBER_NAME` is the name of the prober container. Typically it is named using the format `probe-manual-SERVERID`, but you can run `docker ps -a` to make sure.
         - You should see probing logs on the prober container's shell. This indicates that the prober has started the crawling process. 
     - *Stopping the prober container:*
-        - To stop a prober container, use the controller container shell to send a request: `curl PROBER_NAME:3000/api/pool/stop` to stop the crawling process and ensure a graceful container shutdown. 
+        - To stop a prober container, use the controller container shell to send a request: `curl -X POST PROBER_NAME:3000/api/pool/stop` to stop the crawling process and ensure a graceful container shutdown. 
         - References as to what APIs the prober container has can be found in `Jujuby/Prober/app.js`.
  
 ## Common Use Cases 
