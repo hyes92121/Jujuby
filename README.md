@@ -11,8 +11,8 @@ Before starting, make sure the following prerequisites are installed on your mac
 
 First, we need to setup our credentials and project paths. Naviagte to `Jujuby/.envfiles` and modify `variables.env`. You should only change `NORD_USER`, `NORD_PWD`, and `PROJECT_ROOT` and leave the other variables as is.  
 
-Next, we will need to unzip our dataset which also happens to contain the password for our crawler UI. The dataset can be downloaded [here](). 
-Under the project root, type `tar -zxvf MongoData.tgz`. All project related data will be stored in this folder. 
+Next, we will need to unzip our dataset which also happens to contain the password for our crawler UI. The dataset should be [downloaded]() to the project root. 
+Under the project root, type `tar -zxvf MongoData.tgz`. This folder is mounted to the database container and stores all data of the database. 
 
 Should you decide to use a clean database, a folder named `MongoData` is still required. Type `mkdir MongoData` under the project root to create the folder. 
 
@@ -118,3 +118,10 @@ At this point, we have finished setting up the project.
     - Since we're using a noSQL database (MongoDB), we can easily insert a document with a new schema. Simply modify the `writeTransaction()` method in `Jujuby/Prober/src/Probe.js` to fit to your needs. 
 - **Where can I backup the database data?** 
     - All database data is written in `Jujuby/MongoData`. Simply keep a copy of the folder and your data is backed up and can be restored at anytime. 
+
+## Author 
+*Caleb Wang*
+- [github/hyes92121](https://github.com/hyes92121)
+
+## License 
+Copyright &copy; [Caleb Wang](https://github.com/hyes92121). Released under the [MIT license](https://github.com/hyes92121/Jujuby/blob/master/LICENSE). 
