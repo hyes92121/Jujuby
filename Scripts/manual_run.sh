@@ -12,7 +12,7 @@ NORD_USER=$(cat ../.envFiles/variables.env | grep "NORD_USER" | sed 's/=/\n/g' |
 NORD_PWD=$(cat ../.envFiles/variables.env | grep "NORD_PWD" | sed 's/=/\n/g' | tail -n 1)
 
 
-docker run -it --rm -d --cap-add=NET_ADMIN --cap-add=SYS_MODULE --device /dev/net/tun --name $CONTAINER_NAME \
+docker run -it --rm --cap-add=NET_ADMIN --cap-add=SYS_MODULE --device /dev/net/tun --name $CONTAINER_NAME \
     --sysctl net.ipv4.conf.all.rp_filter=2 \
     --ulimit memlock=-1:-1 \
     --net jujuby_main-net \
