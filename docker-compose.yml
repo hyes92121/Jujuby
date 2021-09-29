@@ -28,6 +28,8 @@ services:
     networks:
       main-net:
         ipv4_address: 172.27.0.3
+    ports: 
+      - "8888:27017"
   redis:
     container_name: cache
     image: redis

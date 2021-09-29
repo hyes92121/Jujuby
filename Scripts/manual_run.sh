@@ -9,7 +9,7 @@ PROJECT_ROOT=$(cat ../.envFiles/variables.env | grep "PROJECT_ROOT" | sed 's/=/\
 # Credentials here are taken from the config file. Should a separate Nord VPN account be used, 
 # you would need to manually replace the credentials with an alternative one. 
 NORD_USER=$(cat ../.envFiles/variables.env | grep "NORD_USER" | sed 's/=/\n/g' | tail -n 1)
-NORD_PWD= $(cat ../.envFiles/variables.env | grep "NORD_PWD" | sed 's/=/\n/g' | tail -n 1)
+NORD_PWD=$(cat ../.envFiles/variables.env | grep "NORD_PWD" | sed 's/=/\n/g' | tail -n 1)
 
 
 docker run -it --rm -d --cap-add=NET_ADMIN --cap-add=SYS_MODULE --device /dev/net/tun --name $CONTAINER_NAME \
