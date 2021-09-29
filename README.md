@@ -11,7 +11,7 @@ Before starting, make sure the following prerequisites are installed on your mac
 
 First, we need to setup our credentials and project paths. Naviagte to `Jujuby/.envfiles` and modify `variables.env`. You should only change `NORD_USER`, `NORD_PWD`, and `PROJECT_ROOT` and leave the other variables as is.  
 
-Next, we will need to unzip our dataset which also happens to contain the password for our crawler UI. The dataset should be [downloaded]() to the project root. 
+Next, we will need to unzip our dataset which also happens to contain the password for our crawler UI. The dataset should be [downloaded](https://github.com/hyes92121/Jujuby/releases/download/latest/MongoData.tgz) to the project root. 
 Under the project root, type `tar -zxvf MongoData.tgz`. This folder is mounted to the database container and stores all data of the database. 
 
 Should you decide to use a clean database, a folder named `MongoData` is still required. Type `mkdir MongoData` under the project root to create the folder. 
