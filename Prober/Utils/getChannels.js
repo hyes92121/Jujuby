@@ -9,7 +9,8 @@ const getChannels = async (language = 'zh') => {
    */
   let cursor = ''
   while (true) {
-    const response = await API.twitchAPI('/helix/streams', { language: language, first: 100, after: cursor })
+    let params = (language) ? { language: language, first: 100, after: cursor } : { first: 100, after: cursor }
+    const response = await API.twitchAPI('/helix/streams', params)
     const liveChannels = response.data.data
     if ((liveChannels.length === 0) || (records.length > 99000)) { break } // calls api no more than 990 times
     liveChannels.map(data => { records.push(data) })
