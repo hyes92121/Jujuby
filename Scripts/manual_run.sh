@@ -16,7 +16,7 @@ docker run -it --rm --cap-add=NET_ADMIN --cap-add=SYS_MODULE --device /dev/net/t
     --sysctl net.ipv4.conf.all.rp_filter=2 \
     --ulimit memlock=-1:-1 \
     --net jujuby_main-net \
-    -e USER=hyes92121@gmail.com -e PASS='Ntunslab123!@#' \
+    -e USER=$NORD_USER -e PASS="${NORD_PWD}" \
     -e CONNECT=$SERVERID -e LANGUAGE=$LANGUAGES -e PERCENTAGES=$PERCENTAGES \
     -e COUNTRY=$COUNTRY \
     -e TECHNOLOGY=NordLynx \
