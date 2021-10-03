@@ -1,7 +1,7 @@
 # Jujuby
 Jujuby is a crawler that leverages Twitch internal mechanisms and VPNs to discover content servers hosting Twitch streams. Jujuby can be run directly on the host machine to send requests from your local network, or run in a Docker container to proxy requests through VPN servers. 
 
-A step-by-step video tutorial can be found [here](https://www.youtube.com/watch?v=nZOp0whTBNM). 
+A step-by-step video tutorial can be found [here](https://www.youtube.com/watch?v=isJOWfN9okg). 
 
 ## Getting Started 
 ### Prerequisites: 
