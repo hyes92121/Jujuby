@@ -80,7 +80,7 @@ At this point, we have finished setting up the project.
     - Deciding which VPN servers to use is totally up to you. Be aware though, that one NordVPN subscription (this is what I use) can only have up to 6 connections at once. More than that and you would need another VPN subscription. 
 - **Running all containers**
     - Run `Jujuby/Scripts/manual_run.sh` for each VPN connection. Next, run `docker ps` to see their container names. 
-    - Execute controller container shell and run `curl PROBER_NAME:3000/api/pool/start` for each prober container. 
+    - Execute controller container shell and run `curl -X POST PROBER_NAME:3000/api/pool/start` for each prober container. 
 ### Accessing the database 
 *Note: when starting the Mongo container, the volume `Jujuby/MongoData` is mounted to the container and is where all data is written.* 
 - **Using a Mongo Shell**
